@@ -46,43 +46,69 @@ This type of counter is normally referred to as a Down Counter, (CTD). In a bina
 
 4-bit Count Down Counter
 ### Procedure
-/* write all the steps invloved */
+Connect the supply (+5V) to the circuit. Switch ON the main switch. If the output is 1, then the bulb
+glows.
 
+### PROGRAM :
 
-
-### PROGRAM 
-/*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
 
+## Developed by: Mohamed Nadheem N
+## RegisterNumber:  23014217
+```
+i.) Upcounter :
+module upcounter (clk,A);
+input clk;
+output reg [0:3]A;
+always@ (posedge clk)
+begin
+A[0]=((A[1])&(A[2])&(A[3]))^A[0];
+A[1]=((A[2])&(A[3]))^A[1];
+A[2]=((A[3]))^A[2];
+A[3]=1^A[3];
+end
+endmodule
+```
 
+```
 
+ii.)Downcounter :
+module downcounter (clk,A);
+input clk;
+output reg [0:3]A;
+always@ (posedge clk)
+begin
+A[0]=((~A[1])&(~A[2])&(~A[3]))^A[0];
+A[1]=((~A[2])&(~A[3]))^A[1];
+A[2]=((~A[3]))^A[2];
+A[3]=1^A[3];
+end
+endmodule
+```
 
+## RTL LOGIC UP COUNTER AND DOWN COUNTER :
 
+i.)Upcounter:
+![upcounterrtl](/UPcoun.png)
 
-### RTL LOGIC UP COUNTER AND DOWN COUNTER  
+ii.)Downcounter:
+![downcounterrtl](/DWcoun.png)
 
+## TIMING DIAGRAMS FOR COUNTER :
 
+i.)Upcounter:
+![upcountertd](/RTLup.png)
 
+ii.)Downcounter:
+![downcountertd](/RTLdown.png)
 
+## TRUTH TABLE :
 
+i.)Upcounter:
+![upcountertt](/UPT.png)
 
-
-
-
-### TIMING DIGRAMS FOR COUNTER  
-
-
-
-
-
-### TRUTH TABLE 
-
-
-
-
-
+ii.)Downcounter:
+![downcountertt](/DWT.png)
 
 ### RESULTS 
+Thus,The 4-bit up and down counter is implemented successfully.
